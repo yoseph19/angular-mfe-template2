@@ -13,7 +13,9 @@ Esta plantilla ofrece una base para construir aplicaciones modulares en Angular 
 ## Paso 1: Crea 3 nuevos proyectos usando Angular CLI, con enrutamiento y SCSS:
 
 > ng new shell --routing --style=scss
+>
 > ng new mfe1 --routing --style=scss
+>
 > ng new mfe2 --routing --style=scss
 
 Agregar **--routing** inicializa cada proyecto con soporte de enrutamiento, creando un archivo ` app-routing.module.ts` separado para definir y gestionar rutas para diferentes vistas dentro de la aplicación.
@@ -23,10 +25,15 @@ Agregar **--routing** inicializa cada proyecto con soporte de enrutamiento, crea
 Entra en cada carpeta de proyecto y añade la dependencia `@angular-architects/native-federation`. Esta librería proporciona las herramientas necesarias para habilitar Module Federation en aplicaciones Angular, permitiendo que cada proyecto (shell, mfe1 y mfe2) funcione como un micro-frontend.
 
 > cd shell
+>
 > ng add @angular-architects/native-federation
+>
 > cd ../mfe1
+>
 > ng add @angular-architects/native-federation
+>
 > cd ../mfe2
+>
 > ng add @angular-architects/native-federation
 
 Al agregar `@angular-architects/native-federation`, se configurará cada proyecto para que soporte la arquitectura de micro-frontend, haciendo posible cargar `mfe1` y `mfe2` dinámicamente dentro de `shell`.

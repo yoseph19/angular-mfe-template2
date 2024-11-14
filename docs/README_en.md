@@ -13,7 +13,9 @@ Welcome to the Starter Template for Angular Micro Frontends (Host and Remote Mod
 ## Step 1: Create 3 new projects using Angular CLI with routing and SCSS:
 
 > ng new shell --routing --style=scss
+>
 > ng new mfe1 --routing --style=scss
+>
 > ng new mfe2 --routing --style=scss
 
 Adding **--routing** initializes each project with routing support, creating a separate` app-routing.module.ts` file to define and manage routes for different views within the application.
@@ -23,10 +25,15 @@ Adding **--routing** initializes each project with routing support, creating a s
 Move into each project folder and add the `@angular-architects/native-federation` dependency. This library provides the necessary tools to enable Module Federation in Angular applications, allowing each project (shell, mfe1, and mfe2) to function as a micro-frontend.
 
 > cd shell
+>
 > ng add @angular-architects/native-federation
+>
 > cd ../mfe1
+>
 > ng add @angular-architects/native-federation
+>
 > cd ../mfe2
+>
 > ng add @angular-architects/native-federation
 
 Adding `@angular-architects/native-federation` will configure each project to support micro-frontend architecture, making it possible to load `mfe1` and `mfe2` dynamically within `shell`.
