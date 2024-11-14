@@ -35,20 +35,22 @@ Adding `@angular-architects/native-federation` will configure each project to su
 
 The commands from the previous step will generate the entire structure needed to implement Module Federation. In the shell project, these commands create a file named `federation.config.js`. For the shell application, we can simplify the configuration by removing the exposes block, leaving it as follows:
 
-```json
-const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+```javascript
+const {
+  withNativeFederation,
+  shareAll,
+} = require("@angular-architects/native-federation/config");
 
 module.exports = withNativeFederation({
-  name: 'shell',
+  name: "shell",
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    ...shareAll({
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    }),
   },
-  skip: [
-  'rxjs/ajax',
-  'rxjs/fetch',
-  'rxjs/testing',
-  'rxjs/webSocket',
-  ]
+  skip: ["rxjs/ajax", "rxjs/fetch", "rxjs/testing", "rxjs/webSocket"],
 });
 ```
 
@@ -103,12 +105,12 @@ Replace the content of `src/main.ts` with the following code:
 
 import { initFederation } from '@angular-architects/native-federation';
 
-```json
-import { initFederation } from '@angular-architects/native-federation';
+```typescript
+import { initFederation } from "@angular-architects/native-federation";
 
-initFederation('/assets/federation.manifest.json')
+initFederation("/assets/federation.manifest.json")
   .catch((err) => console.error(err))
-  .then((_) => import('./bootstrap'))
+  .then((_) => import("./bootstrap"))
   .catch((err) => console.error(err));
 ```
 

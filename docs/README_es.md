@@ -35,20 +35,22 @@ Al agregar `@angular-architects/native-federation`, se configurará cada proyect
 
 Los comandos del paso anterior generarán toda la estructura necesaria para implementar Module Federation. En el proyecto shell, estos comandos crean un archivo llamado `federation.config.js`. Para la aplicación shell, podemos simplificar la configuración eliminando el bloque exposes, dejándolo de la siguiente manera:
 
-```json
-const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+```javascript
+const {
+  withNativeFederation,
+  shareAll,
+} = require("@angular-architects/native-federation/config");
 
 module.exports = withNativeFederation({
-  name: 'shell',
+  name: "shell",
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    ...shareAll({
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    }),
   },
-  skip: [
-  'rxjs/ajax',
-  'rxjs/fetch',
-  'rxjs/testing',
-  'rxjs/webSocket',
-  ]
+  skip: ["rxjs/ajax", "rxjs/fetch", "rxjs/testing", "rxjs/webSocket"],
 });
 ```
 
@@ -101,12 +103,12 @@ En el archivo `main.ts` del proyecto shell, agrega el código para cargar el arc
 
 Reemplaza el contenido de `src/main.ts` con el siguiente código:
 
-```json
-import { initFederation } from '@angular-architects/native-federation';
+```typescript
+import { initFederation } from "@angular-architects/native-federation";
 
-initFederation('/assets/federation.manifest.json')
+initFederation("/assets/federation.manifest.json")
   .catch((err) => console.error(err))
-  .then((_) => import('./bootstrap'))
+  .then((_) => import("./bootstrap"))
   .catch((err) => console.error(err));
 ```
 
